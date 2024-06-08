@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uji Deteksi Jendela Apung</title>
+</head>
+<body>
+<script>
+    let isTabActive = true;
+    let timeout;
+
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            isTabActive = false;
+            timeout = setTimeout(function() {
+                if (!isTabActive) {
+                    alert("Anda telah meninggalkan halaman ulangan. Silakan kembali!");
+                }
+            }, 5000);
+        } else {
+            isTabActive = true;
+            clearTimeout(timeout);
+        }
+    }
+
+    document.addEventListener("visibilitychange", handleVisibilityChange, false);
+</script>
+</body>
+</html>
